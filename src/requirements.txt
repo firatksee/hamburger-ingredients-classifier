@@ -1,8 +1,0 @@
-opencv-python
-matplotlib
-numpy
-seaborn
-scikit-learn
-tensorflow
-keras
-PyQt5
