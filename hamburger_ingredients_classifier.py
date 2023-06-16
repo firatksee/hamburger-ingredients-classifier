@@ -147,9 +147,10 @@ class Model():
         predicted_labels = np.argmax(predictions, axis=1)
         cm = confusion_matrix(
             np.argmax(self.test_labels, axis=1), predicted_labels)
+        cm = (cm.T / cm.sum(axis=1)).T
 
-        sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
-                    xticklabels=self.ingredients, yticklabels=self.ingredients, ax=ax3)
+        sns.heatmap(cm, annot=True, fmt='.2f', cmap='Blues',
+                    xticklabels=self.ingredients, yticklabels=self.ingredients, ax=ax3, annot_kws={"fontsize": 8})
         ax3.set_xticklabels(ax3.get_xticklabels(), rotation=45, fontsize=8)
         ax3.set_yticklabels(ax3.get_yticklabels(), rotation=45, fontsize=8)
         ax3.set_xlabel('Predicted Labels')
